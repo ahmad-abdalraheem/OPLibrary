@@ -1,3 +1,5 @@
+using Domain.Entities;
+
 namespace Domain.DTO.Article;
 
 public class SaveArticleDto
@@ -8,5 +10,5 @@ public class SaveArticleDto
 
 	public required string Body { get; set; }
 
-	public List<String>? Tags { get; set; }
+	public List<Tag>? Tags { get; set; }
 }

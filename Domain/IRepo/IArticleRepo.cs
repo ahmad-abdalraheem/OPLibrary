@@ -7,13 +7,13 @@ public interface IArticleRepo
 {
 	public GetArticleDto Add(Article newArticle);
 	
-	public GetArticleDto Update(Article article, Author author);
+	public GetArticleDto Update(SaveArticleDto article, User user);
 	
-	public GetArticleDto Delete(string slug);
+	public GetArticleDto Delete(string slug, User user);
 	
-	public List<GetArticleDto> Get(string slug);
+	public GetArticleDto Get(string slug);
 	
 	public List<GetArticleDto> Search(SearchArticleDto searchArticleDto);
 	
-	public void UpdateTags(List<string>? tags);
+	public void UpdateTags(List<Tag>? tags);
 }

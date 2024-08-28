@@ -27,7 +27,7 @@ public class Article
 	[MaxLength(10_000)]
 	public required string Body { get; set; }
 	
-	public List<String>? Tags { get; set; }
+	public List<Tag>? Tags { get; set; }
 	
 	public required List<User> Favorites { get; set; }
 	

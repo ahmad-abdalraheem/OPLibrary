@@ -12,7 +12,6 @@ public class ArticleService(IArticleRepo articleRepo)
 	{
 		Article newArticle = new Article()
 		{
-			Id = 0,
 			CreatedAt = DateOnly.FromDateTime(DateTime.Now),
 			UpdatedAt = null,
 			Slug = GenerateArticleSlug(saveArticleDto.Title),
@@ -27,14 +26,24 @@ public class ArticleService(IArticleRepo articleRepo)
 
 		if (saveArticleDto.Tags != null)
 			articleRepo.UpdateTags(newArticle.Tags);
+		
 		return articleRepo.Add(newArticle);
 	}
 
-	public GetArticleDto Update(SaveArticleDto saveArticleDto)
+	public GetArticleDto Update(SaveArticleDto saveArticleDto, User user)
 	{
-		
+		return articleRepo.Update(saveArticleDto, user);
 	}
 
+	public GetArticleDto Delete(string slug, User user)
+	{
+		return articleRepo.Delete(slug, user);	
+	}
+
+	public GetArticleDto Get(string slug)
+	{
+		return articleRepo.Get(slug);
+	}
 	private string GenerateArticleSlug(string title)
 	{
 		string slug = title.ToLower().Replace(" ", "-").Replace(".", "dot").Replace("+", "plus");

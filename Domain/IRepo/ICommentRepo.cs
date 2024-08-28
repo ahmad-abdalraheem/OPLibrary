@@ -1,16 +1,17 @@
+using Domain.DTO;
 using Domain.Entities;
 
 namespace Domain.IRepo;
 
 public interface ICommentRepo
 {
-	public Comment Add(Comment comment);
+	public GetCommentDto Add(Comment comment);
 	
-	public Comment Update(Comment comment);
+	public GetCommentDto Update(SaveCommentDto comment, string commentId);
 	
-	public void Delete(Comment comment);
+	public GetCommentDto Delete(string commentId);
 	
-	public List<Comment> Get(int articleId);
+	public List<GetCommentDto> Get(string articleSlug, string userName);
 	
-	public Comment Get(int articleId, int commentId);
+	public Comment GetById(string articleSlug, string commentId);
 }

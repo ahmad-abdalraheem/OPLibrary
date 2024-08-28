@@ -25,4 +25,20 @@ public class UserService(IUserRepo userRepo)
 	{
 		return userRepo.Check(username, password);
 	}
+
+	public Author PromoteToAuthor(User user, string bio = "Hello, I am using OP blog!", string img = "user.png")
+	{
+		Author newAuthor = new Author
+		{
+			UserName = user.UserName,
+			Email = user.Email,
+			Password = user.Password,
+			Bio = bio,
+			Image = img,
+			Followers = new List<User>(),
+			FavoriteArticles = user.FavoriteArticles,
+			Following = user.Following
+		};
+		return userRepo.PromoteToAuthor(newAuthor);
+	}
 }

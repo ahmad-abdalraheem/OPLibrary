@@ -14,6 +14,10 @@ public class User
 	public required string? Email { get; set; }
 	
 	[Required]
-	[Length(72,72)]
+	[MaxLength(72)]
 	public required string Password { get; set; }
+	
+	public required List<Article> FavoriteArticles { get; set; } = new();
+
+	public required List<Author> Following { get; set; } = new();
 }
